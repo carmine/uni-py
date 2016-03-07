@@ -38,3 +38,68 @@ pip install IPython
     - Modules - finding them through sys.path, PYTHONPATH env.
     - And __iterator__ is something that satisfies the iterator protocol. Clue: If it's an iterator, you can use it in a for: statement.
     - A __generator__ is a class or function that implements an iterator, i.e. that implements the iterator protocol.
+    - Creating:
+      - fred = ["a", "b"]
+      - suzy = {"a": 1, 2: "b" }
+      - help({})
+    - For loops
+      - __Comprehension__: brackets
+        ```
+        for x in [y for y in range(10) if y % 2 == 0]:
+          print 'x: %s' % x
+        ```
+      - __Generator__: parentheses
+        ```
+        gen1 = (item.upper() for item in items)
+        for x in gen1:
+          print 'x:', x
+        ```
+    - Classes
+      - `class A(object): pass` - derived from object (recommended)
+        - `a = A()`
+      - _Instance Method_:
+        ```
+        class B(object):
+          def show(self):
+            print 'hello from B'
+        ```
+      - Constructor:
+        ```
+        class B(object):
+          def __init__(self, name):
+            self.name = name
+
+        class A(object):
+          def __init__(self, items=None):
+            if items is None:
+              self.items = []
+            else:
+              self.items = items
+
+        # inheritance
+        class B(A):
+           def __init__(self, name, size):
+             super(B, self).__init__(name)
+             # A.__init__(self, name)    # an older alternative form
+             self.size = size
+
+        ```
+      - _Class Method_:
+        ```
+        class B(object):
+
+            Count = 0
+
+            def dup_string(x):
+                s1 = '%s%s' % (x, x,)
+                return s1
+            dup_string = staticmethod(dup_string)
+
+            @classmethod
+            def show_count(cls, msg):
+                print '%s  %d' % (msg, cls.Count, )
+
+        def test():
+            print B.dup_string('abcd')
+            B.show_count('here is the count: ')
+        ```

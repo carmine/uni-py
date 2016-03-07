@@ -56,11 +56,19 @@ def lists_operations():
     print mylist
 
 
+def dictionaries():
+    print {}
+    print {"a": 1, 2: "b" }
+
+
+
 def main():
     print("\nHello Python World\n")
     lists_construct()
     lists_range()
     lists_operations()
+    dictionaries()
+
 
 if __name__ == '__main__':
     status = main()
